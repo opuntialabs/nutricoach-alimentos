@@ -5,7 +5,7 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminFoodsController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminFoodSubgroupsController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
@@ -25,40 +25,25 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "foods";
+			$this->table = "food_subgroups";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
+			$this->col[] = ["label"=>"Grupo","name"=>"food_group_id","join"=>"food_groups,name"];
 			$this->col[] = ["label"=>"Nombre","name"=>"name"];
-			$this->col[] = ["label"=>"Cantidad","name"=>"weight"];
-			$this->col[] = ["label"=>"Unidad","name"=>"unit_id","join"=>"units,name"];
-			$this->col[] = ["label"=>"Porción","name"=>"measure_id","join"=>"measures,name"];
-			$this->col[] = ["label"=>"Medida Casera","name"=>"home_measure_id","join"=>"home_measures,name"];
-			$this->col[] = ["label"=>"Calorías","name"=>"calories"];
-			$this->col[] = ["label"=>"Subgrupo de Alimentos","name"=>"food_subgroup_id","join"=>"food_subgroups,name"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
+			$this->form[] = ['label'=>'Grupo de Alimentos','name'=>'food_group_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'food_groups,name'];
 			$this->form[] = ['label'=>'Nombre','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'Puedes introducir solo una letra'];
-			$this->form[] = ['label'=>'Cantidad','name'=>'weight','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Unidad de peso','name'=>'unit_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'units,name'];
-			$this->form[] = ['label'=>'Porción','name'=>'measure_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'measures,name'];
-			$this->form[] = ['label'=>'Medida Casera','name'=>'home_measure_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'home_measures,name'];
-			$this->form[] = ['label'=>'Calorías','name'=>'calories','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Grupo de alimentos','name'=>'food_subgroup_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'food_subgroups,name'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
+			//$this->form[] = ['label'=>'Grupo de Alimentos','name'=>'food_group_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'food_groups,name'];
 			//$this->form[] = ['label'=>'Nombre','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'Puedes introducir solo una letra'];
-			//$this->form[] = ['label'=>'Cantidad','name'=>'weight','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Unidad de peso','name'=>'unit_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'units,name'];
-			//$this->form[] = ['label'=>'Porción','name'=>'measure_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'measures,name'];
-			//$this->form[] = ['label'=>'Medida Casera','name'=>'home_measure_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'home_measures,name'];
-			//$this->form[] = ['label'=>'Calorías','name'=>'calories','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Grupo de alimentos','name'=>'food_subgroup_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'food_subgroups,name'];
 			# OLD END FORM
 
 			/* 
